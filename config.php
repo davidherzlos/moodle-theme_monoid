@@ -31,6 +31,15 @@ $THEME->parents = array('boost');
 $THEME->sheets = array('custom');
 $THEME->editor_sheets = [];
 $THEME->usefallback = true;
+
+$THEME->layouts = [
+    // The pagelayout used for reports.
+    'report' => array(
+        'file' => 'columns1.php',
+        'regions' => array()
+    )
+];
+
 $THEME->precompiledcsscallback = 'theme_boost_get_precompiled_css';
 $THEME->enable_dock = false;
 
@@ -43,6 +52,7 @@ $THEME->prescsscallback = 'theme_monoid_get_pre_scss';
 $THEME->scss = function(theme_config $theme) {
     return theme_monoid_get_main_scss_content($theme);
 };
+
 $THEME->extrascsscallback = 'theme_monoid_get_extra_scss';
 $THEME->csspostprocess = 'theme_monoid_process_css';
 

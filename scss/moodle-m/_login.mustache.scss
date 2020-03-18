@@ -1,0 +1,14 @@
+
+#region-main {
+    border: none;
+}
+@include media-breakpoint-down(xs) {
+    .monlogin {
+        padding-left: 0;
+        padding-right: 0;
+    }
+  }
+
+  .monlogin .card {
+    border: $card-border-width solid $card-border-color;
+  }
