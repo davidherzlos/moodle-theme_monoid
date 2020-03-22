@@ -15,14 +15,33 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Monoid theme.
- *
- * @package    theme_monoid
- * @copyright  &copy; 2018-onwards G J Barnard.
- * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
- */
+* Monoid theme.
+*
+* @package    theme_monoid
+* @copyright  &copy; 2018-onwards G J Barnard.
+* @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
+* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+*/
 
 class theme_monoid_core_renderer extends \theme_boost\output\core_renderer {
-    // Add your methods here.
+
+    /**
+    * Overriden wrapper for header elements.
+    *
+    * @return string HTML to display the main header.
+    */
+    public function full_header() {
+        global $PAGE;
+
+        $header = new stdClass();
+        $header->settingsmenu = $this->context_header_settings_menu();
+        $header->contextheader = $this->context_header();
+        $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);
+        $header->navbar = $this->navbar();
+        $header->pageheadingbutton = $this->page_heading_button();
+        $header->courseheader = $this->course_header();
+
+        // Here we change the header template to use theme_monoid template
+        return $this->render_from_template('theme_monoid/header', $header);
+    }
 }
