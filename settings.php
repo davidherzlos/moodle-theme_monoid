@@ -26,14 +26,32 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    // Add your settings here.
-
     // Custom CSS.
     $name = 'theme_monoid/customcss';
     $title = get_string('customcss', 'theme_monoid');
     $description = get_string('customcssdesc', 'theme_monoid');
     $default = '';
     $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // Fonts sizes setting
+    // default values
+    $base = '1';
+    $h1 = '3.5';
+    $h2 = '3';
+    $h3 = '2';
+    $h4 = '1.75';
+    $h5 = '1.5';
+    $h6 = '1';
+
+    $name = 'theme_monoid/fontsizes';
+    $visiblename = get_string('fontsizes', 'theme_monoid');
+    $description = get_string('fontsizesdesc', 'theme_monoid', array('base' => $base, 'h1' => $h1, 'h2' => $h2, 'h3' => $h3, 'h4' => $h4, 'h5' => $h5, 'h6' => $h6));
+    $default = $base.PHP_EOL.$h1.PHP_EOL.$h2.PHP_EOL.$h3.PHP_EOL.$h4.PHP_EOL.$h5.PHP_EOL.$h6;
+    $cols = 7;
+    $rows = 8;
+    $setting = new theme_monoid_admin_setting_configfontsizes($name, $visiblename, $description, $default, $cols, $rows);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 }

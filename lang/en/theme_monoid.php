@@ -45,5 +45,11 @@ $string['region-side-pre'] = 'Left';
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Add custom CSS to the theme.';
 
+$string['fontsizes'] = 'Headings and body font sizes';
+$string['fontsizesdesc'] = 'Set the base font size and heading multiplers.  Defaults of base: {$a->base}, h1: {$a->h1}, h2: {$a->h2}, h3: {$a->h3}, h4: {$a->h4}, h5: {$a->h5} and h6: {$a->h6}.';
+
+$string['fontsizeslabel'] = 'body<br>h1<br>h2<br>h3<br>h4<br>h5<br>h6';
+$string['fontsizeserror'] = 'Each line must have a value. The line value must be lower than the previous line';
+
 // Privacy.
 $string['privacy:nop'] = 'The Monoid theme stores has settings that pertain to its configuration.  It also may inherit settings and user preferences from the parent Boost theme, please examine the \'Plugin privacy compliance registry\' for \'Boost\' for details.  For the settings, it is your responsibility to ensure that no user data is entered in any of the free text fields.  Setting a setting will result in that action being logged within the core Moodle logging system against the user whom changed it, this is outside of the themes control, please see the core logging system for privacy compliance for this.  When uploading images, you should avoid uploading images with embedded location data (EXIF GPS) included or other such personal data.  It would be possible to extract any location / personal data from the images.  Please examine the code carefully to be sure that it complies with your interpretation of your privacy laws.  I am not a lawyer and my analysis is based on my interpretation.  If you have any doubt then remove the theme forthwith.';

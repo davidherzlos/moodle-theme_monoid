@@ -30,6 +30,8 @@ defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
 require_once($CFG->dirroot.'/theme/boost/lib.php');
+require_once($CFG->dirroot.'/lib/adminlib.php');
+
 
 /**
  * Get SCSS to prepend.
@@ -45,6 +47,21 @@ function theme_monoid_get_pre_scss($theme) {
     }
     $scss = theme_boost_get_pre_scss($boosttheme);
     $scss .= file_get_contents($CFG->dirroot . '/theme/monoid/scss/monoid_pre.scss');
+
+    // Our setting is applied
+    $sizes = theme_monoid_admin_setting_configfontsizes::decode_from_db($theme->settings->fontsizes);
+
+    $scss .= '$font-size-base: '.trim($sizes[0]).'rem;';
+
+    $scss .= '$h1-font-size: $font-size-base * '.trim($sizes[1]).';';
+    $scss .= '$h2-font-size: $font-size-base * '.trim($sizes[2]).';';
+    $scss .= '$h3-font-size: $font-size-base * '.trim($sizes[3]).';';
+    $scss .= '$h4-font-size: $font-size-base * '.trim($sizes[4]).';';
+    $scss .= '$h5-font-size: $font-size-base * '.trim($sizes[5]).';';
+    $scss .= '$h6-font-size: $font-size-base * '.trim($sizes[6]).';';
+
+    error_log($scss);
+
     return $scss;
 }
 
@@ -66,7 +83,6 @@ function theme_monoid_get_main_scss_content($theme) {
            map-merge as shown in _variables.css.  The method 'theme_boost_get_main_scss_content()' only looks
            at the 'preset' setting.  If this changes then adapt.*/
             $scss .= file_get_contents($CFG->dirroot . '/theme/monoid/scss/preset-m/default.scss');
-
         } else {
             $scss = theme_boost_get_main_scss_content($boosttheme);
         }
