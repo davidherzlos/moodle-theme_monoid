@@ -54,4 +54,53 @@ if ($ADMIN->fulltree) {
     $setting = new theme_monoid_admin_setting_configfontsizes($name, $visiblename, $description, $default, $cols, $rows);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
+
+    // min value
+    $name = 'theme_monoid/minwidthvalue';
+    $visibletitle = get_string('minwidthvalue', 'theme_monoid');
+    $description = get_string('minwidthvaluedesc', 'theme_monoid');
+    $default = '';
+    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=200, $minvalue=0, $maxvalue=1920);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // min value
+    $name = 'theme_monoid/maxwidthvalue';
+    $visibletitle = get_string('maxwidthvalue', 'theme_monoid');
+    $description = get_string('maxwidthvaluedesc', 'theme_monoid');
+    $default = '';
+    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=500, $minvalue=0, $maxvalue=1920);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // $blocks-column-width and $drawer-width setting in pixels between a defined or default range
+
+    // width constraints for blocks colums and drawer widths
+    $minvalue = get_config('theme_monoid', 'minwidthvalue');
+    $maxvalue = get_config('theme_monoid', 'maxwidthvalue');
+    $blockswidth = get_config('theme_monoid', 'blockswidth');
+
+    // Blocks column (right)
+    $name = 'theme_monoid/blockswidth';
+    $visibletitle = get_string('blockswidth', 'theme_monoid');
+    $description = get_string('blockswidthdesc', 'theme_monoid');
+
+    // Default blocks colum width
+    $default = '';
+
+    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=360, $minvalue, $maxvalue);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    // Drawer (left)
+    $name = 'theme_monoid/drawerwidth';
+    $visibletitle = get_string('drawerwidth', 'theme_monoid');
+    $description = get_string('drawerwidthdesc', 'theme_monoid');
+
+    // Default drawer width
+    $default = '';
+
+    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=285, $minvalue, $maxvalue);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
 }
