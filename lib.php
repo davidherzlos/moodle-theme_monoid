@@ -48,6 +48,7 @@ function theme_monoid_get_pre_scss($theme) {
     $scss = theme_boost_get_pre_scss($boosttheme);
     $scss .= file_get_contents($CFG->dirroot . '/theme/monoid/scss/monoid_pre.scss');
 
+
     // Our setting is applied
     $sizes = theme_monoid_admin_setting_configfontsizes::decode_from_db($theme->settings->fontsizes);
 
@@ -59,9 +60,6 @@ function theme_monoid_get_pre_scss($theme) {
     $scss .= '$h4-font-size: $font-size-base * '.trim($sizes[4]).';';
     $scss .= '$h5-font-size: $font-size-base * '.trim($sizes[5]).';';
     $scss .= '$h6-font-size: $font-size-base * '.trim($sizes[6]).';';
-
-    error_log($scss);
-
     return $scss;
 }
 
