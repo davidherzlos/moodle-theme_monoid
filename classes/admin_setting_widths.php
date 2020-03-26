@@ -20,7 +20,9 @@
  * @copyright 2015 onwards Ankit Agarwal, adapted for monoid by David OC
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_monoid_admin_setting_widths extends admin_setting_configtext_with_maxlength {
+namespace theme_monoid;
+
+class admin_setting_widths extends \admin_setting_configtext_with_maxlength {
 
     /** @var int maximum number of chars allowed. */
     protected $maxlength;
@@ -55,7 +57,7 @@ class theme_monoid_admin_setting_widths extends admin_setting_configtext_with_ma
         if ($parentvalidation === true && $data != '') {
             if ($this->maxlength > 0) {
                 // Max length check.
-                $length = core_text::strlen($data);
+                $length = \core_text::strlen($data);
                 if ($length > $this->maxlength) {
                     return get_string('maximumchars', 'moodle',  $this->maxlength);
                 } elseif ((int)$data < $this->minvalue || (int) $data > $this->maxvalue) {

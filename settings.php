@@ -51,7 +51,7 @@ if ($ADMIN->fulltree) {
     $default = $base.PHP_EOL.$h1.PHP_EOL.$h2.PHP_EOL.$h3.PHP_EOL.$h4.PHP_EOL.$h5.PHP_EOL.$h6;
     $cols = 7;
     $rows = 8;
-    $setting = new theme_monoid_admin_setting_configfontsizes($name, $visiblename, $description, $default, $cols, $rows);
+    $setting = new \theme_monoid\admin_setting_configfontsizes($name, $visiblename, $description, $default, $cols, $rows);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 
@@ -60,17 +60,15 @@ if ($ADMIN->fulltree) {
     $visibletitle = get_string('minwidthvalue', 'theme_monoid');
     $description = get_string('minwidthvaluedesc', 'theme_monoid');
     $default = '';
-    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=200, $minvalue=0, $maxvalue=1920);
-    $setting->set_updatedcallback('theme_reset_all_caches');
+    $setting = new \theme_monoid\admin_setting_widths($name, $visibletitle, $description, $default=200, $minvalue=0, $maxvalue=1920);
     $settings->add($setting);
 
-    // min value
+    // max value
     $name = 'theme_monoid/maxwidthvalue';
     $visibletitle = get_string('maxwidthvalue', 'theme_monoid');
     $description = get_string('maxwidthvaluedesc', 'theme_monoid');
     $default = '';
-    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=500, $minvalue=0, $maxvalue=1920);
-    $setting->set_updatedcallback('theme_reset_all_caches');
+    $setting = new \theme_monoid\admin_setting_widths($name, $visibletitle, $description, $default=500, $minvalue=0, $maxvalue=1920);
     $settings->add($setting);
 
     // $blocks-column-width and $drawer-width setting in pixels between a defined or default range
@@ -78,7 +76,6 @@ if ($ADMIN->fulltree) {
     // width constraints for blocks colums and drawer widths
     $minvalue = get_config('theme_monoid', 'minwidthvalue');
     $maxvalue = get_config('theme_monoid', 'maxwidthvalue');
-    $blockswidth = get_config('theme_monoid', 'blockswidth');
 
     // Blocks column (right)
     $name = 'theme_monoid/blockswidth';
@@ -88,7 +85,7 @@ if ($ADMIN->fulltree) {
     // Default blocks colum width
     $default = '';
 
-    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=360, $minvalue, $maxvalue);
+    $setting = new \theme_monoid\admin_setting_widths($name, $visibletitle, $description, $default=360, $minvalue, $maxvalue);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 
@@ -100,7 +97,7 @@ if ($ADMIN->fulltree) {
     // Default drawer width
     $default = '';
 
-    $setting = new theme_monoid_admin_setting_widths($name, $visibletitle, $description, $default=285, $minvalue, $maxvalue);
+    $setting = new \theme_monoid\admin_setting_widths($name, $visibletitle, $description, $default=285, $minvalue, $maxvalue);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 }

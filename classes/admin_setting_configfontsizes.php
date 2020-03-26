@@ -23,13 +23,14 @@
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
 */
 
+namespace theme_monoid;
 
 /**
 * General text area to store 7 different font sizes in one setting.
 *
 * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
-class theme_monoid_admin_setting_configfontsizes extends admin_setting_configtext {
+class admin_setting_configfontsizes extends \admin_setting_configtext {
     private $rows;
     private $cols;
 

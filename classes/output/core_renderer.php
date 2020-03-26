@@ -22,8 +22,9 @@
 * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
 */
+namespace theme_monoid\output;
 
-class theme_monoid_core_renderer extends \theme_boost\output\core_renderer {
+class core_renderer extends \theme_boost\output\core_renderer {
 
     /**
     * Overriden wrapper for header elements.
@@ -33,7 +34,7 @@ class theme_monoid_core_renderer extends \theme_boost\output\core_renderer {
     public function full_header() {
         global $PAGE;
 
-        $header = new stdClass();
+        $header = new \stdClass();
         $header->settingsmenu = $this->context_header_settings_menu();
         $header->contextheader = $this->context_header();
         $header->hasnavbar = empty($PAGE->layout_options['nonavbar']);

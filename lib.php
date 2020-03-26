@@ -49,7 +49,7 @@ function theme_monoid_get_pre_scss($theme) {
     $scss .= file_get_contents($CFG->dirroot . '/theme/monoid/scss/monoid_pre.scss');
 
     // Our setting is applied
-    $sizes = theme_monoid_admin_setting_configfontsizes::decode_from_db($theme->settings->fontsizes);
+    $sizes = theme_monoid\admin_setting_configfontsizes::decode_from_db($theme->settings->fontsizes);
 
     $scss .= '$font-size-base: '.trim($sizes[0]).'rem;';
 
@@ -61,14 +61,13 @@ function theme_monoid_get_pre_scss($theme) {
     /* Activity week 2  */
 
     // blocks column width
-    $blockswidth = $theme->settings->blockswidth;
+    $blockswidth = $theme->settings->blockswidth ? : '';
     $scss .= $blockswidth ? ' $blocks-column-width: '.$blockswidth.'px !default;' : '';
 
     // drawer width
-    $drawerwidth = $theme->settings->drawerwidth;
+    $drawerwidth = $theme->settings->drawerwidth ? : '';
     $scss .= $drawerwidth ? ' $drawer-width: '.$drawerwidth.'px !default;' : '';
 
-    error_log($scss);
     return $scss;
 }
 
@@ -89,7 +88,7 @@ function theme_monoid_get_main_scss_content($theme) {
        /* Use our own default.scss as the Boost default.scss redefines $theme-colors instead of merging with
            map-merge as shown in _variables.css.  The method 'theme_boost_get_main_scss_content()' only looks
            at the 'preset' setting.  If this changes then adapt.*/
-            $scss .= file_get_contents($CFG->dirroot . '/theme/monoid/scss/preset-m/default.scss');
+            $scss = file_get_contents($CFG->dirroot . '/theme/monoid/scss/preset-m/default.scss');
         } else {
             $scss = theme_boost_get_main_scss_content($boosttheme);
         }
