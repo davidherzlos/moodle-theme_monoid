@@ -34,9 +34,15 @@ $THEME->usefallback = true;
 
 $THEME->layouts = [
     // The pagelayout used for reports.
+    'course' => array(
+        'file' => 'course.php',
+        'regions' => array()
+    ),
     'report' => array(
         'file' => 'columns1.php',
-        'regions' => array()
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true)
     )
 ];
 
