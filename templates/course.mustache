@@ -61,6 +61,15 @@
     <div id="page" class="container-fluid">
         {{{ output.full_header }}}
 
+        <div class="row search-incourse">
+            <div class="col-12 text-right">
+                <input id="searchincourseinput" type="text" class="form-control-lg align-middle" placeholder="{{# str}} searchincourseinputplaceholder, theme_monoid {{/str}}">
+                <button id="searchincoursebtn" type="button" class="btn btn-primary btn-lg">
+                    {{#str}} searchincoursebtnt, theme_monoid {{/ str}}
+                </button>
+            </div>
+        </div>
+
         <div id="page-content" class="row pb-3">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
@@ -91,7 +100,7 @@
     {{> theme_boost/nav-drawer }}
 
     {{! Button that makes ajax calls }}
-    <div class="row server-datetime">
+    <div class="row serverdatetime">
         <div class="col-12 text-center">
             <button id="serverdatetimebtn" type="button" class="btn btn-primary text-center">{{#str}} serverdatetimebutton, theme_monoid {{/str}}</button>
         <span id="theserverdatetime">{{serverdatetime}}</span></p>

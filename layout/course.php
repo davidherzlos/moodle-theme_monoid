@@ -62,6 +62,8 @@ $courseurl->param('sdt', true);
 $courseurl->param('sesskey', sesskey());
 $PAGE->requires->js_call_amd('theme_monoid/serverdatetime', 'init', array('data' => array('courseurl' => $courseurl->out(false))));
 
+// search incourse button
+$PAGE->requires->js_call_amd('theme_monoid/searchincourse', 'init', array('data' => ['button' => '#searchincoursebtn', 'input' => '#searchincourseinput']));
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
